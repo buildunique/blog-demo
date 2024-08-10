@@ -1,0 +1,39 @@
+{% extends "base.html" %} {%block title%} {%endblock%} {%block body%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-8 col-12">
+      <div class="col s12 m10">
+        <h3>{{post.title}}</h3>
+        <p>({{post.cat.title}})</p>
+        <img src="/media/{{post.image}}" class="img-fluid" alt="" />
+        <br />
+        <p>{{post.content|safe}}</p>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-12">
+      {%for cat in cats%}
+      <div class="card mx-1 my-1">
+        <div class="img-container">
+          <img
+            src="/media/{{cat.image}}"
+            height="300px"
+            alt=""
+            class="img-fluid w-100"
+          />
+        </div>
+        <div class="card-content p-1">
+          <div class="card-title">
+            <b>{{cat.title}}</b>
+          </div>
+          <p class="text-truncate">{{cat.description|truncatewords:5|safe}}</p>
+          <div class="container my-2">
+            <a href="/category/{{cat.url}}" class="nav-bg btn">View</a>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</div>
+{%endblock%}
